@@ -1,0 +1,901 @@
+import random
+import os
+os.system('cls')#Widnows
+
+iniciar = True
+
+while iniciar:
+  ContraCPU = False
+  ContraJogador = False
+  definir = 0
+
+  os.system('cls')
+  print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+  print("Escolher Modo: 1. J1 x J2 \n               2. J1 x CPU\n")
+  definir = int(input("Digite o numero do Modo: "))
+
+  if definir == 1:
+    os.system('cls')
+    print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+    print("Escolher Modo: \x1b[1;31m1. J1 x J2\x1b[0m \n               2. J1 x CPU\n")
+    print("Digite o numero do Modo: 1")
+    ContraJogador = True
+  elif definir == 2:
+    os.system('cls')
+    print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+    print("Escolher Modo: 1. J1 x J2\n               \x1b[1;31m2. J1 x CPU\x1b[0m \n")
+    print("Digite o numero do Modo: 2")
+    ContraCPU = True
+  else:
+    print("\nDigite somente 1 ou 2.")
+
+  os.system('pause')
+  while ContraJogador:
+    
+    jogo = True 
+    jogador1 = True
+    jogador2 = False
+    posicao = [" "," "," "," "," "," "," "," "," "]
+    jogadas = 0
+
+    while jogo:
+
+      os.system('cls')
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("             " + str(posicao[0]) + "\x1b[1;34m | \x1b[0m" + str(posicao[1]) + "\x1b[1;34m | \x1b[0m" + str(posicao[2]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[3]) + "\x1b[1;34m | \x1b[0m" + str(posicao[4]) + "\x1b[1;34m | \x1b[0m" + str(posicao[5]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[6]) + "\x1b[1;34m | \x1b[0m" + str(posicao[7]) + "\x1b[1;34m | \x1b[0m" + str(posicao[8]))
+
+      if jogadas > 0:
+        if str(posicao[0])==str(posicao[1]) and str(posicao[1])==str(posicao[2]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[3])==str(posicao[4]) and str(posicao[4])==str(posicao[5]):
+          if str(posicao[3]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[3]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[6])==str(posicao[7]) and str(posicao[7])==str(posicao[8]):
+          if str(posicao[6]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[6]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[0]) == str(posicao[3]) and str(posicao[3])==str(posicao[6]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[1])==str(posicao[4]) and str(posicao[4])==str(posicao[7]):
+          if str(posicao[1]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[1]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[2])==str(posicao[5]) and str(posicao[5])==str(posicao[8]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[0])==str(posicao[4]) and str(posicao[4])==str(posicao[8]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[2])==str(posicao[4]) and str(posicao[4])==str(posicao[6]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif jogadas == 9:
+          print("     ---------------------\n     |\x1b[1;29m      Empate!    \x1b[0m  |\n     ---------------------")
+          os.system('pause')
+
+      if jogo:
+        while jogador1:
+          escolha=int(input("\nDigite a posição J1: \x1b[91m"))-1
+          if escolha>=0 and escolha<=8: 
+            if posicao[escolha] != "X":
+              if posicao[escolha] != "O":
+                posicao[escolha] = "X"
+                jogadas += 1
+                jogador1 = False
+                jogador2 = True
+          else:
+            print("\x1b[0m\nPosição invalida")
+            os.system('pause')
+
+      os.system('cls')
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("             " + str(posicao[0]) + "\x1b[1;34m | \x1b[0m" + str(posicao[1]) + "\x1b[1;34m | \x1b[0m" + str(posicao[2]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[3]) + "\x1b[1;34m | \x1b[0m" + str(posicao[4]) + "\x1b[1;34m | \x1b[0m" + str(posicao[5]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[6]) + "\x1b[1;34m | \x1b[0m" + str(posicao[7]) + "\x1b[1;34m | \x1b[0m" + str(posicao[8]))
+
+      if jogadas > 0:
+        if str(posicao[0])==str(posicao[1]) and str(posicao[1])==str(posicao[2]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[3])==str(posicao[4]) and str(posicao[4])==str(posicao[5]):
+          if str(posicao[3]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[3]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[6])==str(posicao[7]) and str(posicao[7])==str(posicao[8]):
+          if str(posicao[6]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[6]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[0]) == str(posicao[3]) and str(posicao[3])==str(posicao[6]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[1])==str(posicao[4]) and str(posicao[4])==str(posicao[7]):
+          if str(posicao[1]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[1]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[2])==str(posicao[5]) and str(posicao[5])==str(posicao[8]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[0])==str(posicao[4]) and str(posicao[4])==str(posicao[8]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif str(posicao[2])==str(posicao[4]) and str(posicao[4])==str(posicao[6]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador1 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador2 Vencedor!\x1b[0m |\n     ---------------------")
+            os.system('pause')
+        elif jogadas == 9:
+          print("     ---------------------\n     |\x1b[1;29m      Empate!    \x1b[0m  |\n     ---------------------")
+          os.system('pause')
+
+      if jogo:
+        while jogador2:
+          escolha=int(input("\nDigite a posição J2: \x1b[91m"))-1
+          if escolha>=0 and escolha<=8: 
+            if posicao[escolha] != "X":
+              if posicao[escolha] != "O":
+                posicao[escolha] = "O"
+                jogadas += 1
+                jogador2 = False
+                jogador1 = True
+          else:
+            print("\x1b[0m\nPosição invalida")
+            os.system('pause')
+
+      
+
+  while ContraCPU:
+    # Variavel para ter certeza de que o jogo esta rodando
+    jogo = False
+
+    # Vez do jogador e CPU
+    jogador = True
+    cpu = False
+
+    # Variavel da CPU valor aleatorio
+    cpuEs = 0
+
+    # Contador de Rodadas
+    jogadas = 0
+
+    # Variavel de controle do jogo
+    posicao = [" "," "," "," "," "," "," "," "," "]
+
+    # Variavel para escolher posição
+    escolha = "11"
+
+    # Variavel de Dificuldade do CPU
+    dificuldade = 0
+
+    # Menu principal
+    os.system('cls')
+    print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+    print("Dificuldades: 1. Facil\n              2. Dificil\n              3. Impossivel")
+    dificuldade = int(input("\nDigite o numero da dificuldade: "))
+
+    # Imprimir dificuldade selecionada
+    if dificuldade == 1:   
+      os.system('cls')
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("Dificuldades:\x1b[1;31m 1. Facil\x1b[0m\n              2. Dificil\n              3. Impossivel")
+      print("\nDigite o numero da dificuldade: 1")
+      os.system('pause')
+      jogo = True
+    elif dificuldade == 2:   
+      os.system('cls')
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("Dificuldades: 1. Facil\n            \x1b[1;31m  2. Dificil\x1b[0m\n              3. Impossivel")
+      print("\nDigite o numero da dificuldade: 2")
+      os.system('pause')
+      jogo = True
+    elif dificuldade == 3:
+      os.system('cls')
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("Dificuldades: 1. Facil\n              2. Dificil\n        \x1b[1;31m      3. Impossivel\x1b[0m")
+      print("\nDigite o numero da dificuldade: 3")
+      os.system('pause')
+      jogo = True
+    else:
+      print("\x1b[1;41m\nDigite somente 1, 2 e 3 para selecionar a dificuldade!\x1b[0m")
+
+    # loop do jogo
+    while jogo:
+      
+      os.system('cls')
+
+      # Verificar a rodada
+      if jogadas == 9:
+        jogo = False
+      
+      # Imprimir situação do jogo 
+      print("\x1b[1;34m        ___Jogo da Velha___ \x1b[0m\n")
+      print("             " + str(posicao[0]) + "\x1b[1;34m | \x1b[0m" + str(posicao[1]) + "\x1b[1;34m | \x1b[0m" + str(posicao[2]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[3]) + "\x1b[1;34m | \x1b[0m" + str(posicao[4]) + "\x1b[1;34m | \x1b[0m" + str(posicao[5]))
+      print("\x1b[3;34m             ---------\x1b[0m")
+      print("             " + str(posicao[6]) + "\x1b[1;34m | \x1b[0m" + str(posicao[7]) + "\x1b[1;34m | \x1b[0m" + str(posicao[8]))
+
+      # Verificador de ganhador
+      if jogadas > 0:
+        if str(posicao[0])==str(posicao[1]) and str(posicao[1])==str(posicao[2]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[3])==str(posicao[4]) and str(posicao[4])==str(posicao[5]):
+          if str(posicao[3]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[3]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[6])==str(posicao[7]) and str(posicao[7])==str(posicao[8]):
+          if str(posicao[6]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[6]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[0]) == str(posicao[3]) and str(posicao[3])==str(posicao[6]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[1])==str(posicao[4]) and str(posicao[4])==str(posicao[7]):
+          if str(posicao[1]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[1]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[2])==str(posicao[5]) and str(posicao[5])==str(posicao[8]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[0])==str(posicao[4]) and str(posicao[4])==str(posicao[8]):
+          if str(posicao[0]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[0]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif str(posicao[2])==str(posicao[4]) and str(posicao[4])==str(posicao[6]):
+          if str(posicao[2]) == "X":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m Jogador Vencedor!\x1b[0m |\n     ---------------------")
+            break
+          elif str(posicao[2]) == "O":
+            jogo = False
+            print("     ---------------------\n     |\x1b[1;29m   CPU Vencedora!\x1b[0m  |\n     ---------------------")
+            break
+        elif jogadas == 9:
+          print("     ---------------------\n     |\x1b[1;29m      Empate!    \x1b[0m  |\n     ---------------------")
+          break
+
+      # Controle do jogador
+      if jogadas <= 8 and jogo:
+        while jogador:
+          escolha=int(input("\nDigite a posição: \x1b[91m"))-1
+          if escolha>=0 and escolha<=8: 
+            if posicao[escolha] != "X":
+              if posicao[escolha] != "O":
+                posicao[escolha] = "X"
+                jogadas += 1
+                jogador = False
+                cpu = True
+          else:
+            print("\x1b[0m\nPosição invalida")
+            os.system('pause')
+
+
+      # Controle da CPU
+      if jogadas <= 8 and jogo:
+        if cpu:
+          # Dificuldade Facil
+          if dificuldade == 1:
+            while cpu: 
+              cpuEs = random.randrange(0,9)
+              if posicao[cpuEs] != "X":
+                if posicao[cpuEs] != "O":
+                  posicao[cpuEs] = "O"
+                  jogadas += 1
+                  jogador = True
+                  cpu = False
+
+          # Dificuldade Dificil
+          elif dificuldade == 2:
+            if str(posicao[0]) == str(posicao[1]) and str(posicao[1]) == "X": #1XXO
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[2]) and str(posicao[2]) == "X": #1XOX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[2]) and str(posicao[2]) == "X": #1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            
+            elif str(posicao[3]) == str(posicao[4]) and str(posicao[4]) == "X": #2XXO
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[5]) and str(posicao[5]) == "X": #2X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[5]) and str(posicao[5]) == "X": #2OXX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[6]) == str(posicao[7]) and str(posicao[7]) == "X": #3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[6]) == str(posicao[8]) and str(posicao[8]) == "X": #3XOX
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[7]) == str(posicao[8]) and str(posicao[8]) == "X": #3OXX
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[3]) and str(posicao[3]) == "X": #1.1XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":             
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[6]) and str(posicao[6]) == "X": #1.1XOX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[6]) and str(posicao[6]) == "X": #1.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[1]) == str(posicao[4]) and str(posicao[4]) == "X": #2.2XXO
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[7]) and str(posicao[7]) == "X": #2.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[7]) and str(posicao[7]) == "X": #2.2OXX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[2]) == str(posicao[5]) and str(posicao[5]) == "X": #3.3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[8]) and str(posicao[8]) == "X": #3.3XOX
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[5]) == str(posicao[8]) and str(posicao[8]) == "X": #3.3OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[4]) and str(posicao[4]) == "X": #D.1XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[8]) and str(posicao[8]) == "X": #D.1X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[8]) and str(posicao[8]) == "X": #D.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[2]) == str(posicao[4]) and str(posicao[4]) == "X": #D.2XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[6]) and str(posicao[6]) == "X": #D.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[6]) and str(posicao[6]) == "X": #D.2OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            while cpu:
+                cpuEs = random.randrange(0,9)
+                if posicao[cpuEs] != "X":
+                  if posicao[cpuEs] != "O":
+                    posicao[cpuEs] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+          # Dificuldade Impossivel
+          elif dificuldade == 3:
+            # Verificar o O
+            if str(posicao[0]) == str(posicao[1]) and str(posicao[1]) == "O": #1XXO
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[2]) and str(posicao[2]) == "O": #1XOX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[2]) and str(posicao[2]) == "O": #1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            
+            elif str(posicao[3]) == str(posicao[4]) and str(posicao[4]) == "O": #2XXO
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[5]) and str(posicao[5]) == "O": #2X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[5]) and str(posicao[5]) == "O": #2OXX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[6]) == str(posicao[7]) and str(posicao[7]) == "O": #3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[6]) == str(posicao[8]) and str(posicao[8]) == "O": #3XOX
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[7]) == str(posicao[8]) and str(posicao[8]) == "O": #3OXX
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[3]) and str(posicao[3]) == "O": #1.1XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":             
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[6]) and str(posicao[6]) == "O": #1.1XOX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[6]) and str(posicao[6]) == "O": #1.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[1]) == str(posicao[4]) and str(posicao[4]) == "O": #2.2XXO
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[7]) and str(posicao[7]) == "O": #2.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[7]) and str(posicao[7]) == "O": #2.2OXX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[2]) == str(posicao[5]) and str(posicao[5]) == "O": #3.3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[8]) and str(posicao[8]) == "O": #3.3XOX
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[5]) == str(posicao[8]) and str(posicao[8]) == "O": #3.3OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[4]) and str(posicao[4]) == "O": #D.1XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[8]) and str(posicao[8]) == "O": #D.1X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[8]) and str(posicao[8]) == "O": #D.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[2]) == str(posicao[4]) and str(posicao[4]) == "O": #D.2XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[6]) and str(posicao[6]) == "O": #D.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[6]) and str(posicao[6]) == "O": #D.2OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            # Verificar o X
+            elif str(posicao[0]) == str(posicao[1]) and str(posicao[1]) == "X": #1XXO
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[2]) and str(posicao[2]) == "X": #1XOX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[2]) and str(posicao[2]) == "X": #1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            
+            elif str(posicao[3]) == str(posicao[4]) and str(posicao[4]) == "X": #2XXO
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[5]) and str(posicao[5]) == "X": #2X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[5]) and str(posicao[5]) == "X": #2OXX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[6]) == str(posicao[7]) and str(posicao[7]) == "X": #3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[6]) == str(posicao[8]) and str(posicao[8]) == "X": #3XOX
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[7]) == str(posicao[8]) and str(posicao[8]) == "X": #3OXX
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[3]) and str(posicao[3]) == "X": #1.1XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":             
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[6]) and str(posicao[6]) == "X": #1.1XOX
+              if str(posicao[3]) != "X" and str(posicao[3]) != "O":
+                    posicao[3] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[3]) == str(posicao[6]) and str(posicao[6]) == "X": #1.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[1]) == str(posicao[4]) and str(posicao[4]) == "X": #2.2XXO
+              if str(posicao[7]) != "X" and str(posicao[7]) != "O":
+                    posicao[7] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[1]) == str(posicao[7]) and str(posicao[7]) == "X": #2.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[7]) and str(posicao[7]) == "X": #2.2OXX
+              if str(posicao[1]) != "X" and str(posicao[1]) != "O":
+                    posicao[1] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[2]) == str(posicao[5]) and str(posicao[5]) == "X": #3.3XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[8]) and str(posicao[8]) == "X": #3.3XOX
+              if str(posicao[5]) != "X" and str(posicao[5]) != "O":
+                    posicao[5] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[5]) == str(posicao[8]) and str(posicao[8]) == "X": #3.3OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+
+            elif str(posicao[0]) == str(posicao[4]) and str(posicao[4]) == "X": #D.1XXO
+              if str(posicao[8]) != "X" and str(posicao[8]) != "O":
+                    posicao[8] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[0]) == str(posicao[8]) and str(posicao[8]) == "X": #D.1X0X
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[8]) and str(posicao[8]) == "X": #D.1OXX
+              if str(posicao[0]) != "X" and str(posicao[0]) != "O":
+                    posicao[0] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[4]) and str(posicao[4]) == "X": #D.2XXO
+              if str(posicao[6]) != "X" and str(posicao[6]) != "O":
+                    posicao[6] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[2]) == str(posicao[6]) and str(posicao[6]) == "X": #D.2XOX
+              if str(posicao[4]) != "X" and str(posicao[4]) != "O":
+                    posicao[4] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            elif str(posicao[4]) == str(posicao[6]) and str(posicao[6]) == "X": #D.2OXX
+              if str(posicao[2]) != "X" and str(posicao[2]) != "O":
+                    posicao[2] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+            while cpu:
+                cpuEs = random.randrange(0,9)
+                if posicao[cpuEs] != "X":
+                  if posicao[cpuEs] != "O":
+                    posicao[cpuEs] = "O"
+                    jogadas += 1
+                    jogador = True
+                    cpu = False
+    
+    os.system('pause')
+    
